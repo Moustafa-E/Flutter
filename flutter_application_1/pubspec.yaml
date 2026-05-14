@@ -85,5 +85,9 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: FiraCode
+      fonts:
+        - asset: fonts/FiraCode-VariableFont_wght.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
