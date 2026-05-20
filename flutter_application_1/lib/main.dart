@@ -102,26 +102,46 @@ class Home extends StatelessWidget {
 
           Container(
             // Treat this container like a playground. 
-            margin: EdgeInsets.all(30.0),
+            margin: EdgeInsets.all(10.0),
             height: 500,
             width: 500,
+
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround, // seems like Exanded() is overriding this by taking up all available space. 
+              crossAxisAlignment: CrossAxisAlignment.center,
 
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(30.0),
-                  color: Colors.cyan,
-                  child: Text('1'),
+                Expanded(
+                  /*
+                  - Flex value is the fraction of space the widget will use up. 
+                  - 1+2+3=6. Available space inside Row() is divided into 6 portions. Number of portions given to each widget is their flex value. 1 uses 1/6 Row(), 2: 2/6 Row(): 3: 3/6 Row()
+                  - Useful for scaling images in limited space. Just replace a Text() child with Image.asset('space.png')
+                  */
+                  flex: 1,
+
+                  child: Container(
+                    padding: EdgeInsets.all(10.0),
+                    color: Colors.cyan,
+                    child: Text('1'),                
+                  ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(30.0),
-                  color: Colors.cyan,
-                  child: Text('2'),
+                Expanded(
+                  flex: 2,  
+
+                  child: Container(
+                    padding: EdgeInsets.all(10.0),
+                    color: Colors.cyan,
+                    child: Text('2'),
+                  ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(30.0),
-                  color: Colors.cyan,
-                  child: Text('3'),
+                Expanded(
+                  flex: 3, 
+
+                  child: Container(
+                    padding: EdgeInsets.all(10.0),
+                    color: Colors.cyan,
+                    child: Text('3'),
+                  ),
                 ),
               ],
             ),
