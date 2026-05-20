@@ -64,11 +64,18 @@ class Home extends StatelessWidget {
 
           Image.asset('space.png'),
           
-          Icon(
-            Icons.airport_shuttle,
-            color: Colors.blue,
-            size: 200.0,
+          Container(
+            color: Colors.blueGrey[600],
+            padding: EdgeInsets.symmetric(horizontal: 100.0, vertical: 10.0), // use p in the run terminal to see what this does.
+            margin: EdgeInsets.fromLTRB(10, 20, 20, 10), // Padding has its own widget but it won't allow defining a margin ofc. 
+            
+            child: Icon(
+              Icons.airport_shuttle,
+              color: Colors.blue,
+              size: 200.0,
+            ),
           ),
+
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center, // Works similarly to CSS flex box. Nice :)
