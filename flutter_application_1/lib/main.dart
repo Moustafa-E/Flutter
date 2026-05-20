@@ -42,9 +42,10 @@ class Home extends StatelessWidget {
         // Since we're inside the MaterialApp wgt, you have access to various Material Design Properties by google. 
         // Learn more about that here: https://m3.material.io/. Square brackets is the strength.
       ),
-      body: ListView(
+      body: ListView( // Column() or Row() would overflow / not fit the screen. 
         // Think "child" as a generic property for any widget. So far we've just used specific default ones.
-        children: [
+        // "children" takes a list of whatever you cast the list to. In this case we have a list of widgets.
+        children: <Widget>[
           Text(
             'centered body',
             style: TextStyle( // follows CSS convention for styling text. Specify style, then within that style specify things like color.
@@ -67,7 +68,7 @@ class Home extends StatelessWidget {
           Container(
             color: Colors.blueGrey[600],
             padding: EdgeInsets.symmetric(horizontal: 100.0, vertical: 10.0), // use p in the run terminal to see what this does.
-            margin: EdgeInsets.fromLTRB(10, 20, 20, 10), // Padding has its own widget but it won't allow defining a margin ofc. 
+            margin: EdgeInsets.fromLTRB(10, 20, 20, 10), // Padding has its own widget but it won't allow defining a margin or color.  
             
             child: Icon(
               Icons.airport_shuttle,
@@ -78,20 +79,25 @@ class Home extends StatelessWidget {
 
 
           Row(
-            mainAxisAlignment: MainAxisAlignment.center, // Works similarly to CSS flex box. Nice :)
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Works similarly to CSS flex box. Nice :) Horizontal.
+            crossAxisAlignment: CrossAxisAlignment.start, // Vertical
             children: [
-              ElevatedButton(
-                onPressed: () {handleClick();},
-                child: Text('Click me.'),
-              ),
-              ElevatedButton.icon(
-                onPressed: () {handleClick(text: ':+)');}, 
-                label: Text('Click me too.'),
-                icon: Icon(
-                  Icons.add_box,
-                  color: Colors.blue,
-                ),
-              )
+              Container( // Clicking on a widget and selecting the lightbulb gives you a bunch of quick actions you can take. 
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+                child: ElevatedButton(
+                  onPressed: () {handleClick();},
+                  child: Text('Click me.'),
+              )),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 50),
+                child: ElevatedButton.icon(
+                    onPressed: () {handleClick(text: ':+)');}, 
+                    label: Text('Click me too.'),
+                    icon: Icon(
+                      Icons.add_box,
+                      color: Colors.blue,
+                    ),
+              )),
             ] 
           ),
         ]
