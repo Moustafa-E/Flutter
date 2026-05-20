@@ -79,8 +79,7 @@ class Home extends StatelessWidget {
 
 
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Works similarly to CSS flex box. Nice :) Horizontal.
-            crossAxisAlignment: CrossAxisAlignment.start, // Vertical
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container( // Clicking on a widget and selecting the lightbulb gives you a bunch of quick actions you can take. 
                 padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
@@ -89,7 +88,7 @@ class Home extends StatelessWidget {
                   child: Text('Click me.'),
               )),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 50),
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
                 child: ElevatedButton.icon(
                     onPressed: () {handleClick(text: ':+)');}, 
                     label: Text('Click me too.'),
@@ -99,6 +98,33 @@ class Home extends StatelessWidget {
                     ),
               )),
             ] 
+          ),
+
+          Container(
+            // Treat this container like a playground. 
+            margin: EdgeInsets.all(30.0),
+            height: 500,
+            width: 500,
+            child: Row(
+
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(30.0),
+                  color: Colors.cyan,
+                  child: Text('1'),
+                ),
+                Container(
+                  padding: EdgeInsets.all(30.0),
+                  color: Colors.cyan,
+                  child: Text('2'),
+                ),
+                Container(
+                  padding: EdgeInsets.all(30.0),
+                  color: Colors.cyan,
+                  child: Text('3'),
+                ),
+              ],
+            ),
           ),
         ]
       ),
