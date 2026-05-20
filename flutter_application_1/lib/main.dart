@@ -136,10 +136,19 @@ class Home extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 3, 
-
+                  
                   child: Container(
+                    // Container decorations should all be specified here for more control. 
+                    decoration: BoxDecoration(
+                      color: Colors.cyan, 
+                      border: BoxBorder.all(
+                        width: 0.1
+                      ),
+                      borderRadius: BorderRadius.all(Radius.elliptical(5, 5))
+                    ),
+                    
                     padding: EdgeInsets.all(10.0),
-                    color: Colors.cyan,
+                    // color: Colors.cyan,
                     child: Text('3'),
                   ),
                 ),
@@ -162,6 +171,7 @@ class Home extends StatelessWidget {
           ) 
         ), 
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
