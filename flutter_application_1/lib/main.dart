@@ -48,6 +48,14 @@ class Home extends StatelessWidget {
         // Think "child" as a generic property for any widget. So far we've just used specific default ones.
         // "children" takes a list of whatever you cast the list to. In this case we have a list of widgets.
         children: <Widget>[
+          
+          Divider(
+            height: 50,
+            color: Colors.grey[800],
+            indent: 10,
+            endIndent: 10,
+          ),
+
           Text(
             'centered body',
             style: TextStyle( // follows CSS convention for styling text. Specify style, then within that style specify things like color.
@@ -63,6 +71,13 @@ class Home extends StatelessWidget {
               Quit and start the app again. Hot restart didn't work. */
             ),
             textAlign: TextAlign.center,
+          ),
+
+          Divider(
+            height: 50,
+            color: Colors.grey[800],
+            indent: 10,
+            endIndent: 10,
           ),
 
           Image.asset('space.png'),
