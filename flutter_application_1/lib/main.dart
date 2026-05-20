@@ -34,6 +34,8 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[850],
+
       // "appBar" is a property of Scaffold().
       appBar: AppBar(
         // title is a property of AppBar(). Display text using the Text() widget.
@@ -54,7 +56,7 @@ class Home extends StatelessWidget {
               /* ^ A bit weird here. FontWeight treated as a "class" that isn't quite a widget. Kinda like Colors.red. Perhaps widgets will "contain" something, whereas raw classes will "change" something.
               -- I tried with brackets, and it looks like these "raw classes" are called generative enum constructors. They just generate a constant.
               */
-              color: Colors.grey[600],
+              color: Colors.grey[300],
               fontFamily: 'FiraCode',
               /* Grab a font from google, extract the zip and put the font file in some directory you can refer to. 
               Go to pubspec.yaml, add the font family & asset, then run "flutter pub get" 
@@ -64,9 +66,16 @@ class Home extends StatelessWidget {
           ),
 
           Image.asset('space.png'),
+
+          Divider(
+            height: 50,
+            color: Colors.grey[800],
+            indent: 10,
+            endIndent: 10,
+          ),
           
           Container(
-            color: Colors.blueGrey[600],
+            color: Colors.grey[800],
             padding: EdgeInsets.symmetric(horizontal: 100.0, vertical: 10.0), // use p in the run terminal to see what this does.
             margin: EdgeInsets.fromLTRB(10, 20, 20, 10), // Padding has its own widget but it won't allow defining a margin or color.  
             
@@ -76,7 +85,13 @@ class Home extends StatelessWidget {
               size: 200.0,
             ),
           ),
-
+          
+          Divider(
+            height: 50,
+            color: Colors.grey[800],
+            indent: 10,
+            endIndent: 10,
+          ),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -97,14 +112,32 @@ class Home extends StatelessWidget {
                       color: Colors.blue,
                     ),
               )),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 50),
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('cash.png'),
+
+                ), 
+              )
             ] 
           ),
 
           Container(
             // Treat this container like a playground. 
-            margin: EdgeInsets.all(10.0),
+            margin: EdgeInsets.all(2),
             height: 500,
             width: 500,
+            decoration: BoxDecoration(
+              border: BoxBorder.all(
+                width: 1, 
+                color: (Colors.grey[800])!,
+                /* 
+                - If you check the BoxBorder properties, color: is defined using "Color", *not* "Color?". 
+                - The property cannot be null. ()! allows the value to be null if you're sure it won't be. 
+                - Can also use Colors.grey.shade400 which seems to build it in. Should probs stick to that. 
+                */
+              )
+            ),
 
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround, // seems like Exanded() is overriding this by taking up all available space. 
@@ -121,7 +154,8 @@ class Home extends StatelessWidget {
 
                   child: Container(
                     padding: EdgeInsets.all(10.0),
-                    color: Colors.cyan,
+                    margin: EdgeInsets.only(left: 2),
+                    color: Colors.red,
                     child: Text('1'),                
                   ),
                 ),
@@ -130,25 +164,27 @@ class Home extends StatelessWidget {
 
                   child: Container(
                     padding: EdgeInsets.all(10.0),
-                    color: Colors.cyan,
+                    margin: EdgeInsets.only(left: 2),
+                    color: Colors.green,
                     child: Text('2'),
                   ),
                 ),
                 Expanded(
                   flex: 3, 
-                  
+
                   child: Container(
-                    // Container decorations should all be specified here for more control. 
+                    // Container decorations should all be specified here for more control. color: property is shorthand.
                     decoration: BoxDecoration(
-                      color: Colors.cyan, 
+                      color: Colors.blue, 
                       border: BoxBorder.all(
-                        width: 0.1
+                        width: 1,
+                        color: Colors.grey.shade400,
                       ),
-                      borderRadius: BorderRadius.all(Radius.elliptical(5, 5))
+                      borderRadius: BorderRadius.all(Radius.elliptical(5, 5)),
                     ),
                     
                     padding: EdgeInsets.all(10.0),
-                    // color: Colors.cyan,
+                    margin: EdgeInsets.only(left: 2, right: 2),
                     child: Text('3'),
                   ),
                 ),
@@ -161,14 +197,18 @@ class Home extends StatelessWidget {
         onPressed: () {},
         backgroundColor: Colors.blue[600],
         // Pro tip: Hover over a widget to see its possible properties. The "child" property lets us nest widgets.
-        child: Text(
-          'floating action button', 
-          textScaler: TextScaler.linear(0.6),
-          textAlign: TextAlign.center, // found in docs. When you don't know what a property takes, try a class of the same name. 
-          // ^ This one confused me because I thought I had to wrap it in a center wgt first but it happened to have a property that also does that.
-          style: TextStyle(
-            color: Colors.white,
-          ) 
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+
+          child: Text(
+            'floating action button', 
+            textScaler: TextScaler.linear(0.6),
+            textAlign: TextAlign.center, // found in docs. When you don't know what a property takes, try a class of the same name. 
+            // ^ This one confused me because I thought I had to wrap it in a center wgt first but it happened to have a property that also does that.
+            style: TextStyle(
+              color: Colors.white,
+            ) 
+          ),
         ), 
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
