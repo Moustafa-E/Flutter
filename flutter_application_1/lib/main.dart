@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() { runApp(MaterialApp(
@@ -10,7 +11,7 @@ void main() { runApp(MaterialApp(
 class demo extends StatelessWidget {
   // This is us making our own widget class. 
   /* 
-    This lets the app hot reload on its own because Flutter will rerun build() when a change is detected... at least in Android Studio
+    This lets the app hot reload on its own because Flutter will rerun build() when a change is detected... at least in Android Studio. Hot reload works better just not automatically.
     - Stateless: widget state cannot change during runtime
     - Stateful: widget state can change during runtime 
   */
@@ -22,6 +23,13 @@ class demo extends StatelessWidget {
   }
 }
 
+void handleClick({String text = ':)'}) {
+  // Got a warning when trying just print('thanks') because it won't work well in production. 
+  if(kDebugMode) {
+    debugPrint(text);
+  }
+}
+
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -30,29 +38,61 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         // title is a property of AppBar(). Display text using the Text() widget.
         title: Text('title'),
-        backgroundColor: Colors.red[600], 
+        backgroundColor: Colors.blue[600], 
         // Since we're inside the MaterialApp wgt, you have access to various Material Design Properties by google. 
         // Learn more about that here: https://m3.material.io/. Square brackets is the strength.
       ),
-      body: Center(
+      body: ListView(
         // Think "child" as a generic property for any widget. So far we've just used specific default ones.
-        child: Text(
-          'centered body',
-          style: TextStyle( // follows CSS convention for styling text. Specify style, then within that style specify things like color.
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold, // A bit weird here. FontWeight treated as a "class" that isn't quite a widget. Kinda like Colors.red. Perhaps, generally speaking, widgets will "contain" something, whereas raw classes will "change" something.
-            color: Colors.grey[600],
-            fontFamily: 'FiraCode',
-            /* Grab a font from google, extract the zip and put the font file in some directory you can refer to. 
-            Go to pubspec.yaml, add the font family & asset, then run "flutter pub get" 
-            Quit and start the app again. Hot restart didn't work. */
+        children: [
+          Text(
+            'centered body',
+            style: TextStyle( // follows CSS convention for styling text. Specify style, then within that style specify things like color.
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold, 
+              /* ^ A bit weird here. FontWeight treated as a "class" that isn't quite a widget. Kinda like Colors.red. Perhaps widgets will "contain" something, whereas raw classes will "change" something.
+              -- I tried with brackets, and it looks like these "raw classes" are called generative enum constructors. They just generate a constant.
+              */
+              color: Colors.grey[600],
+              fontFamily: 'FiraCode',
+              /* Grab a font from google, extract the zip and put the font file in some directory you can refer to. 
+              Go to pubspec.yaml, add the font family & asset, then run "flutter pub get" 
+              Quit and start the app again. Hot restart didn't work. */
+            ),
+            textAlign: TextAlign.center,
           ),
-        ),
+
+          Image.asset('space.png'),
+          
+          Icon(
+            Icons.airport_shuttle,
+            color: Colors.blue,
+            size: 200.0,
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center, // Works similarly to CSS flex box. Nice :)
+            children: [
+              ElevatedButton(
+                onPressed: () {handleClick();},
+                child: Text('Click me.'),
+              ),
+              ElevatedButton.icon(
+                onPressed: () {handleClick(text: ':+)');}, 
+                label: Text('Click me too.'),
+                icon: Icon(
+                  Icons.add_box,
+                  color: Colors.blue,
+                ),
+              )
+            ] 
+          ),
+        ]
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: Colors.red[600],
-        // Pro tip: Hover over a widget to see its possible properties.
+        backgroundColor: Colors.blue[600],
+        // Pro tip: Hover over a widget to see its possible properties. The "child" property lets us nest widgets.
         child: Text(
           'floating action button', 
           textScaler: TextScaler.linear(0.6),
