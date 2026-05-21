@@ -30,7 +30,14 @@ void handleClick({String text = ':)'}) {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  // Was stateless. I used the quick action menu to convert it to stateful. 
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -228,5 +235,24 @@ class Home extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+}
+
+
+// used stful to get the skeleton classes. 
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({super.key});
+
+  @override
+  State<MyStatefulWidget> createState() => _MyWidgetState();
+  // This line instantiates the state class below. 
+}
+
+class _MyWidgetState extends State<MyStatefulWidget> {
+  // Here's where we define data that can change the state over time. 
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+    // returns a widget tree just like Home().
   }
 }
