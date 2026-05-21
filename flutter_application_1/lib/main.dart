@@ -8,7 +8,7 @@ void main() { runApp(MaterialApp(
 ));} 
 
 //// Stateless Widgets ////
-class demo extends StatelessWidget {
+class Demo extends StatelessWidget {
   // This is us making our own widget class. 
   /* 
     This lets the app hot reload on its own because Flutter will rerun build() when a change is detected... at least in Android Studio. Hot reload works better just not automatically.
@@ -23,7 +23,7 @@ class demo extends StatelessWidget {
   }
 }
 
-void handleClick({String text = ':)'}) {
+void handleClick({String text = ':3'}) {
   // Got a warning when trying just print('thanks') because it won't work well in production. 
   if(kDebugMode) {
     debugPrint(text);
@@ -37,6 +37,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  String clickSmiley = '';
 
   @override
   Widget build(BuildContext context) {
@@ -119,15 +121,31 @@ class _HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container( // Clicking on a widget and selecting the lightbulb gives you a bunch of quick actions you can take. 
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 child: ElevatedButton(
-                  onPressed: () {handleClick();},
+                    onPressed: () {
+                      handleClick(text: ':3');
+                      /* 
+                      - Changing the state variable directly won't retrigger the build function. That's what setState( () {} ) does.
+                      - Also not sure how to extract to a separate function yet since setState() only works in a stateful widget. 
+                      */ 
+                      setState(() {
+                        clickSmiley = ':3';
+                      });
+                    }, 
+                  
                   child: Text('Click me.'),
               )),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 20),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 child: ElevatedButton.icon(
-                    onPressed: () {handleClick(text: ':+)');}, 
+                    onPressed: () {
+                      handleClick(text: '>:3');
+                      setState(() {
+                        clickSmiley = '>:3';
+                      });
+                    }, 
+                    
                     label: Text('Click me too.'),
                     icon: Icon(
                       Icons.add_box,
@@ -139,8 +157,15 @@ class _HomeState extends State<Home> {
                 child: CircleAvatar(
                   backgroundImage: AssetImage('cash.png'),
 
-                ), 
-              )
+              )),
+              Container(
+                decoration: BoxDecoration(border: Border.all(width: 0.5, color: (Colors.grey[800])!)),
+                child: Text(
+                  clickSmiley,
+                  style: TextStyle(
+                    color: Colors.blue
+                  )
+              )),
             ] 
           ),
 
