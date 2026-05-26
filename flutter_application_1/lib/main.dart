@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'quote.dart';
 
 void main() { runApp(MaterialApp(
   // Widgets have properties. The values of these can be other widgets or something else. 
@@ -270,10 +271,10 @@ class ListsOfData extends StatefulWidget {
 
 class _ListsOfDataState extends State<ListsOfData> {
 
-  List<String> quotes = [
-    "cash is cool",
-    "it's too hot",
-    "my head hurts"
+  List<Quote> quotes = [
+    Quote(author: 'me', text: "cash is cool"),
+    Quote(author: 'me', text: "it's too hot"),
+    Quote(author: 'me', text: "my head hurts"),
   ];
 
   @override
@@ -286,7 +287,7 @@ class _ListsOfDataState extends State<ListsOfData> {
       child: Column(
         // .map operates on each item in the list and expects a function. We've defined that function as returning a text widget
         // Then we convert the whole operation to a list because children: expects that. 
-        children: quotes.map( (quote) {return Text(quote);} ).toList()
+        children: quotes.map( (quote) {return Text("${quote.text}: ${quote.author}");} ).toList()
       ),
     );
   }
