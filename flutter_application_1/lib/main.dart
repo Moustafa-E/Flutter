@@ -277,6 +277,34 @@ class _ListsOfDataState extends State<ListsOfData> {
     Quote(author: 'me', text: "my head hurts"),
   ];
 
+  // This will be the function that operates on each item in the list. 
+  Widget quoteTemplate(quote){
+    return Card(
+      margin: EdgeInsets.fromLTRB(16,16,16,6),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            Text(
+              quote.text,
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.grey[900]
+              )
+            ),
+            Text(
+              quote.author,
+              style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey[800]
+              )
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -287,7 +315,7 @@ class _ListsOfDataState extends State<ListsOfData> {
       child: Column(
         // .map operates on each item in the list and expects a function. We've defined that function as returning a text widget
         // Then we convert the whole operation to a list because children: expects that. 
-        children: quotes.map( (quote) {return Text("${quote.text}: ${quote.author}");} ).toList()
+        children: quotes.map( (quote) => quoteTemplate(quote) ).toList()
       ),
     );
   }
