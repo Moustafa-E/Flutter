@@ -158,14 +158,12 @@ class _HomeState extends State<Home> {
                   backgroundImage: AssetImage('cash.png'),
 
               )),
-              Container(
-                decoration: BoxDecoration(border: Border.all(width: 0.5, color: (Colors.grey[800])!)),
-                child: Text(
-                  clickSmiley,
-                  style: TextStyle(
-                    color: Colors.blue
-                  )
-              )),
+              Text(
+                clickSmiley,
+                style: TextStyle(
+                  color: Colors.blue
+                )
+              ),
             ] 
           ),
 
