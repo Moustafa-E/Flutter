@@ -82,21 +82,7 @@ class _HomeState extends State<Home> {
             textAlign: TextAlign.center,
           ),
 
-          Divider(
-            height: 50,
-            color: Colors.grey[800],
-            indent: 10,
-            endIndent: 10,
-          ),
-
           Image.asset('space.png'),
-
-          Divider(
-            height: 50,
-            color: Colors.grey[800],
-            indent: 10,
-            endIndent: 10,
-          ),
           
           Container(
             color: Colors.grey[800],
@@ -108,13 +94,6 @@ class _HomeState extends State<Home> {
               color: Colors.blue,
               size: 200.0,
             ),
-          ),
-          
-          Divider(
-            height: 50,
-            color: Colors.grey[800],
-            indent: 10,
-            endIndent: 10,
           ),
 
           Row(
@@ -236,6 +215,8 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
+
+          ListsOfData()
         ]
       ),
       floatingActionButton: FloatingActionButton(
@@ -256,7 +237,7 @@ class _HomeState extends State<Home> {
           ),
         ), 
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
@@ -277,5 +258,36 @@ class _MyWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return const Placeholder();
     // returns a widget tree just like Home().
+  }
+}
+
+class ListsOfData extends StatefulWidget {
+  const ListsOfData({super.key});
+
+  @override
+  State<ListsOfData> createState() => _ListsOfDataState();
+}
+
+class _ListsOfDataState extends State<ListsOfData> {
+
+  List<String> quotes = [
+    "cash is cool",
+    "it's too hot",
+    "my head hurts"
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white
+      ),
+
+      child: Column(
+        // .map operates on each item in the list and expects a function. We've defined that function as returning a text widget
+        // Then we convert the whole operation to a list because children: expects that. 
+        children: quotes.map( (quote) {return Text(quote);} ).toList()
+      ),
+    );
   }
 }
