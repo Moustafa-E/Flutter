@@ -14,6 +14,8 @@ void main() { runApp(MaterialApp(
 ));} 
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   // Was stateless. I used the quick action menu to convert it to stateful. 
   @override
   State<Home> createState() => _HomeState();

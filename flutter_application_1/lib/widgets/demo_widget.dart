@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 //// Stateless Widgets ////
 class Demo extends StatelessWidget {
+  const Demo({super.key});
+
   // This is us making our own widget class. 
   /* 
     This lets the app hot reload on its own because Flutter will rerun build() when a change is detected... at least in Android Studio. Hot reload works better just not automatically.
