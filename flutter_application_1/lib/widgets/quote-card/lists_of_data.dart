@@ -11,7 +11,7 @@ class ListsOfData extends StatefulWidget {
 
 class _ListsOfDataState extends State<ListsOfData> {
 
-  List<Quote> quotes = [
+  List<Quote> quoteList = [
     Quote(author: 'me', text: "cash is cool"),
     Quote(author: 'me', text: "it's too hot"),
     Quote(author: 'me', text: "my head hurts"),
@@ -27,7 +27,7 @@ class _ListsOfDataState extends State<ListsOfData> {
       child: Column(
         // .map operates on each item in the list and expects a function. This function will return the quoteCard widget defined below.
         // Then we convert the whole operation to a list because children: expects that. 
-        children: quotes.map( (quote) => QuoteCard(quote: quote) ).toList()
+        children: quoteList.map( (quote) => QuoteCard(quote: quote) ).toList()
       ),
     );
   }
