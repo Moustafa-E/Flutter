@@ -13,6 +13,10 @@ class _FlexplaygroundState extends State<Flexplayground> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('FlexBox Playground'),
+        backgroundColor: Colors.blueGrey, 
+      ),
       body: Column(
         children: [
           NavBar(),

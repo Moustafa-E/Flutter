@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
       // "appBar" is a property of Scaffold().
       appBar: AppBar(
         // title is a property of AppBar(). Display text using the Text() widget.
-        title: Text('title'),
+        title: Text('Home'),
         backgroundColor: Colors.blueGrey, 
         // Since we're inside the MaterialApp wgt, you have access to various Material Design Properties by google. 
         // Learn more about that here: https://m3.material.io/. Square brackets is the strength.

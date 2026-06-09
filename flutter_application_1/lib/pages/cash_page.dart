@@ -13,6 +13,10 @@ class _CashRowState extends State<CashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Cash'),
+        backgroundColor: Colors.blueGrey, 
+      ),
       body: Column(
         children: [
           NavBar(),

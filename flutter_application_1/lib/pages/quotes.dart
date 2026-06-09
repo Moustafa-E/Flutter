@@ -14,7 +14,8 @@ class _QuotesState extends State<Quotes> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
+        title: Text('Quotes'),
+        backgroundColor: Colors.blueGrey, 
       ),
       body: Column(
         children: [
