@@ -25,3 +25,31 @@ class CustomFloatingAction extends StatelessWidget {
     );
   }
 }
+
+class NavButton extends StatelessWidget {
+
+  final IconData icon;
+  final String text;
+  final String route;
+
+  const NavButton({
+    super.key,
+    required this.text,
+    required this.icon,
+    required this.route
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: (){ Navigator.pushNamed(context, route); }, 
+      
+      child: Column(
+        children: [
+          Text(text),
+          Icon(icon)
+        ],
+      )
+    );
+  }
+}

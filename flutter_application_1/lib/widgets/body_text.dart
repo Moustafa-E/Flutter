@@ -6,7 +6,7 @@ class BodyText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'centered body',
+      'Home Page',
       style: TextStyle( // follows CSS convention for styling text. Specify style, then within that style specify things like color.
         fontSize: 20.0,
         fontWeight: FontWeight.bold, 
