@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/helper-methods/handle_clicks.dart';
 
@@ -10,9 +11,21 @@ class CashRow extends StatefulWidget {
 
 class _CashRowState extends State<CashRow> {
   String clickSmiley = '';
-
+  @override
+  void initState(){
+    // this function is called for all widgets once. We're just calling the parent version (that we're overriding) + a print statement to show how it works
+    // When you load a page with this widget, you'll fire the initState() method.
+    super.initState();
+    if (kDebugMode) {
+      print("initState() function ran");
+    }
+  }
   @override
   Widget build(BuildContext context) {
+    // build() will fire twice in stateful widgets. 1. when they first load with initState() & 2. when some data on the widget changes.
+    if (kDebugMode) {
+      print("build() function ran");
+    }
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
