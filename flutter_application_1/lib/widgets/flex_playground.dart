@@ -24,7 +24,7 @@ class FlexPlayground extends StatelessWidget {
 
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround, // seems like Exanded() is overriding this by taking up all available space. 
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
 
         children: <Widget>[
           Expanded(

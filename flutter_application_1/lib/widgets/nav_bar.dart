@@ -8,11 +8,13 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(12.0),
-      child: Row(children: [
-        NavButton(text: "home", icon: Icons.home, route: '/home'),
-        NavButton(text: "quotes", icon: Icons.speaker_group, route: '/quotes'),
-        NavButton(text: "CashPage", icon: Icons.pets, route: '/cashPage'),
-        NavButton(text: "FlexPlayground", icon: Icons.sports_baseball, route: '/flexPlayground'),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          NavButton(text: "home", icon: Icons.home, route: '/home'),
+          NavButton(text: "quotes", icon: Icons.speaker_group, route: '/quotes'),
+          NavButton(text: "CashPage", icon: Icons.pets, route: '/cashPage'),
+          NavButton(text: "FlexPlayground", icon: Icons.sports_baseball, route: '/flexPlayground'),
       ]),
     );
   }
