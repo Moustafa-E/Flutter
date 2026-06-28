@@ -17,9 +17,15 @@ class _LoadingState extends State<Loading> {
     JsonRequest requestInstance = JsonRequest(number: 2);
     await requestInstance.getData(); // await has two conditions: 1) use inside an async function and 2) use on a statement with a future (if statement includes a function)
     // must await getData() above because it's asynchronous. Can't await inside a synchronous function, which is why we didn't call this driectly in initState()
-    setState(() {
-      result = requestInstance.data;
-    });
+    Navigator.pushReplacementNamed(
+      // Ahhh - this won't just put home on top but replace it. Nice. Third argument will send data to the page too. 
+      context, 
+      '/cashPage', 
+      arguments: {
+      // keys are the variable names to be set in next page
+        'result': requestInstance.data
+      }
+    );
   }
 
   @override
@@ -36,7 +42,7 @@ class _LoadingState extends State<Loading> {
         child: Column(
           children: [
             NavBar(),
-            Text(result),
+            Text('loading'),
           ],
         ),
       )
