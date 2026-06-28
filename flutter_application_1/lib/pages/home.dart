@@ -52,7 +52,10 @@ class _HomeState extends State<Home> {
 
           BodyText(),
 
-          Container(decoration: BoxDecoration(color: Colors.grey), child: Center(child: Text(data['result']))), //TODO: The null page on startup didn't happen when Icon one didn't exist and this was just data.toString() with data being an Object? . Find out how to eliminate that null page on startup. Maybe I define the request methods elsewhere?
+          Container(decoration: BoxDecoration(color: Colors.grey), child: Center(child: Text(data['result']))), 
+          //TODO: Find out how to eliminate that null page on startup. 
+          // The null page on startup didn't happen when Icon one didn't exist and this was just data.toString() with data being an Object? . 
+          // As long as I click Home button which routes to '/' then it works as expected. Something different with hot restart. Maybe hot restart is using last page? YYESSS. Hot restart is going to the last seen page - /home - before it's ready, giving rise to the exception. So how
 
           Image.asset('space.png'),
           
