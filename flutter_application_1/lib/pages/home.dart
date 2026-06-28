@@ -33,10 +33,9 @@ class _HomeState extends State<Home> {
     // !. is accessing "settings" with a null check. If null, don't process. Remove for more info. 
     
     return Scaffold(
-      backgroundColor: Colors.grey[850],
-      // "appBar" is a property of Scaffold().
+      backgroundColor: Colors.grey[850], // this will extend to the phone's status bar.
+      
       appBar: AppBar(
-        // title is a property of AppBar(). Display text using the Text() widget.
         title: Text('Home'),
         backgroundColor: Colors.blueGrey, 
         // Since we're inside the MaterialApp wgt, you have access to various Material Design Properties by google. 
@@ -53,7 +52,7 @@ class _HomeState extends State<Home> {
           BodyText(),
 
           Container(decoration: BoxDecoration(color: Colors.grey), child: Center(child: Text(data['result']))), 
-          //TODO: Find out how to eliminate that null page on startup. 
+          //TODO: Find out how to eliminate that null page on hot restart. 
           // The null page on startup didn't happen when Icon one didn't exist and this was just data.toString() with data being an Object? . 
           // As long as I click Home button which routes to '/' then it works as expected. Something different with hot restart. Maybe hot restart is using last page? 
           // YYESSS. Hot restart is going to the last seen page - /home - before it's ready, giving rise to the exception. 
@@ -62,6 +61,7 @@ class _HomeState extends State<Home> {
           Image.asset('space.png'),
           
           IconBox(isAbove5: data['isAbove5']),
+          // For background images, consider #33 SafeArea() widget demo at 9:51. SafeArea(child:Container(decoration:BoxDecoration(image:DecorationImage(image:AssetImage(),fit:BoxFit.cover))))
         ]
       ),
       floatingActionButton: CustomFloatingAction(),
