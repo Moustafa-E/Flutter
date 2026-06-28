@@ -15,6 +15,7 @@ class NavBar extends StatelessWidget {
           NavButton(text: "quotes", icon: Icons.speaker_group, route: '/quotes'),
           NavButton(text: "CashPage", icon: Icons.pets, route: '/cashPage'),
           NavButton(text: "FlexPlayground", icon: Icons.sports_baseball, route: '/flexPlayground'),
+          NavButton(text: "Loading", icon: Icons.circle, route: '/')
       ]),
     );
   }
