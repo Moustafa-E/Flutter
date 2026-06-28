@@ -4,7 +4,8 @@ import 'dart:convert';
 class JsonRequest {
   final int number;
   String data = "";
-  
+  bool isAbove5 = false;
+
   JsonRequest({required this.number});
 
   Future<void> getData() async {
@@ -15,10 +16,12 @@ class JsonRequest {
       Response response = await get(url);
       // Response type given by http. Contains info about response. Body is what we want.
       print(response.body);
-      // This body will look a map but it's actually just a string. 
-      // Can't call fields in there directly, so response.body.userId won't work. Must first convert:
+      // This body will look like a map but it's just a string. 
+      // Can't call fields in there directly, so response.body.userId won't work. Must first convert to json:
+      
       Map body = jsonDecode(response.body);
-      data = 'UserID: ${body['title']}';
+      data = body['title'];
+      isAbove5 = number > 5 ? true : false;
 
     } catch (e) {
       data = 'caught error $e';

@@ -11,11 +11,10 @@ class NavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          NavButton(text: "home", icon: Icons.home, route: '/home'),
+          NavButton(text: "home", icon: Icons.home, route: '/'),
           NavButton(text: "quotes", icon: Icons.speaker_group, route: '/quotes'),
           NavButton(text: "CashPage", icon: Icons.pets, route: '/cashPage'),
           NavButton(text: "FlexPlayground", icon: Icons.sports_baseball, route: '/flexPlayground'),
-          NavButton(text: "Request", icon: Icons.query_builder, route: '/')
       ]),
     );
   }

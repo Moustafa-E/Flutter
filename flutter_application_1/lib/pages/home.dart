@@ -17,15 +17,15 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   // data to be recieved from Loading(). See build().
-  Object? data = {}; // Casting this as an optional Object because of the return type of ModelRoute.settings.arguments below. Would rather not cast because it's hard to see what's being done. 
+  Map data = {};
 
   @override
-  Widget build(BuildContext context) {
-
-    // recieved from third parameter in Navigator.push in Loading() specifically in the build() function.
-    data = ModalRoute.of(context)!.settings.arguments; // no need to set state because this is being done before the widget is built.
-    // !. is accessing "settings" with a null check. If null, don't process. Remove for more info. 
+  Widget build(BuildContext context) {  
     print('Home build() ran');
+    // recieved from third parameter in Navigator.push in Loading() specifically in the build() function.
+    data = ModalRoute.of(context)?.settings.arguments as Map; // no need to set state because this is being done before the widget is built.
+    // !. is accessing "settings" with a null check. If null, don't process. Remove for more info. 
+    
     return Scaffold(
       backgroundColor: Colors.grey[850],
       // "appBar" is a property of Scaffold().
@@ -46,11 +46,11 @@ class _HomeState extends State<Home> {
 
           BodyText(),
 
-          Container(decoration: BoxDecoration(color: Colors.grey), child: Text(data.toString())),
+          Container(decoration: BoxDecoration(color: Colors.grey), child: Center(child: Text(data['result']))),
 
           Image.asset('space.png'),
           
-          IconBox(),
+          IconBox(isAbove5: data['isAbove5'], ),
         ]
       ),
       floatingActionButton: CustomFloatingAction(),
