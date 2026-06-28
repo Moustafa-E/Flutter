@@ -20,8 +20,14 @@ class _HomeState extends State<Home> {
   Map data = {};
 
   @override
+  void initState() {
+    print('>> Home() initState()');
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {  
-    print('Home build() ran');
+    print('>> Home() build()');
     // recieved from third parameter in Navigator.push in Loading() specifically in the build() function.
     data = ModalRoute.of(context)?.settings.arguments as Map; // no need to set state because this is being done before the widget is built.
     // !. is accessing "settings" with a null check. If null, don't process. Remove for more info. 
@@ -46,11 +52,11 @@ class _HomeState extends State<Home> {
 
           BodyText(),
 
-          Container(decoration: BoxDecoration(color: Colors.grey), child: Center(child: Text(data['result']))),
+          Container(decoration: BoxDecoration(color: Colors.grey), child: Center(child: Text(data['result']))), //TODO: The null page on startup didn't happen when Icon one didn't exist and this was just data.toString() with data being an Object? . Find out how to eliminate that null page on startup. Maybe I define the request methods elsewhere?
 
           Image.asset('space.png'),
           
-          IconBox(isAbove5: data['isAbove5'], ),
+          IconBox(isAbove5: data['isAbove5']),
         ]
       ),
       floatingActionButton: CustomFloatingAction(),

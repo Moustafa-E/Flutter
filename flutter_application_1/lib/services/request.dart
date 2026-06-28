@@ -20,7 +20,7 @@ class JsonRequest {
       // Can't call fields in there directly, so response.body.userId won't work. Must first convert to json:
       
       Map body = jsonDecode(response.body);
-      data = body['title'];
+      data = "${body['title']}";
       isAbove5 = number > 5 ? true : false;
 
     } catch (e) {
