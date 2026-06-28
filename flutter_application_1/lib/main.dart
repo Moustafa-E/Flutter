@@ -8,7 +8,7 @@ import 'package:flutter_application_1/pages/quotes.dart';
 void main() { 
   
   runApp(MaterialApp(
-    initialRoute: '/home',
+    initialRoute: '/',
     // Pages are routed via a map with key (string) & value (functions) pairs.
     routes: {
       '/': (context) => Loading(),
