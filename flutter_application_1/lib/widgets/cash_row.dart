@@ -17,14 +17,14 @@ class _CashRowState extends State<CashRow> {
     // When you load a page with this widget, you'll fire the initState() method.
     super.initState();
     if (kDebugMode) {
-      print("initState() function ran");
+      print("CashRow() initState() ran");
     }
   }
   @override
   Widget build(BuildContext context) {
     // build() will fire twice in stateful widgets. 1. when they first load with initState() & 2. when some data on the widget changes.
     if (kDebugMode) {
-      print("build() function ran");
+      print("CashRow() build() ran");
     }
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

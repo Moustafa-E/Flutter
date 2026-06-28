@@ -10,10 +10,7 @@ class CashPage extends StatefulWidget {
 }
 
 class _CashRowState extends State<CashPage> {
-  // data to be recieved from Loading(). See build().
-  Object? data = {}; // Casting this as an optional Object because of the return type of ModelRoute.settings.arguments below. Would rather not cast because it's hard to see what's being done. 
-
-
+  
   // Asynchronous Code
   void getData() async {
     // simulate network request
@@ -48,9 +45,6 @@ class _CashRowState extends State<CashPage> {
 
   @override
   Widget build(BuildContext context) {
-    // recieved from third parameter in Navigator.push in Loading() specifically in the build() function.
-    data = ModalRoute.of(context)!.settings.arguments; // no need to set state because this is being done before the widget is built.
-    // !. is accessing "settings" with a null check. If null, don't process. Remove for more info. 
     print('building cash page');
     return Scaffold(
       appBar: AppBar(
@@ -61,7 +55,6 @@ class _CashRowState extends State<CashPage> {
         children: [
           NavBar(),
           CashRow(),
-          Text(data.toString())
         ],
       ),
     );
