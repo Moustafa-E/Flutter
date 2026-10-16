@@ -3,6 +3,7 @@ import 'package:flutter_application_1/pages/cash_page.dart';
 import 'package:flutter_application_1/pages/loading.dart';
 import 'package:flutter_application_1/pages/home.dart';
 import 'package:flutter_application_1/pages/flexPlayground.dart';
+import 'package:flutter_application_1/pages/flutterDrawingBoard.dart';
 import 'package:flutter_application_1/pages/quotes.dart';
 
 void main() { 
@@ -18,6 +19,7 @@ void main() {
       '/flexPlayground': (context) => Flexplayground(),
       '/quotes': (context) => Quotes(),
       '/cashPage': (context) => CashPage(),
+      '/flutterDrawingBoard': (context) => FlutterDrawingBoard()
     }
   ));
 } 
