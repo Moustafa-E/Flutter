@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/nav_bar.dart';
-import 'package:flutter_application_1/widgets/quote-card/quoteCard_list.dart';
+import 'package:flutter_application_1/widgets/quote-card/quoteCard_List.dart';
 
 class Quotes extends StatefulWidget {
   const Quotes({super.key});
