@@ -6,15 +6,14 @@ import 'package:flutter_application_1/pages/flexPlayground.dart';
 import 'package:flutter_application_1/pages/flutterDrawingBoard.dart';
 import 'package:flutter_application_1/pages/quotes.dart';
 
-void main() { 
-  
+void main() {
   runApp(MaterialApp(
     initialRoute: '/',
     // Pages are routed via a map with key (string) & value (functions) pairs.
     routes: {
       '/': (context) => Loading(),
       // ^ context means where we currently are in the widget tree. 
-      // Widgets have properties. The values of these can be other widgets or something else. 
+      // Widgets have properties. The values of these can be other widgets or something else.
       '/home': (context) => Home(),
       '/flexPlayground': (context) => Flexplayground(),
       '/quotes': (context) => Quotes(),
